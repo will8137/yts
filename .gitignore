@@ -1,0 +1,9 @@
+/public/uploads/
+/public/templates/templates.js
+/config/config.json
+/config/db.json
+/public/css/yts.css
+/public/css/maps/yts.css.map
+/public/build/yts.js
+/public/build/yts.js.map
+node_modules
