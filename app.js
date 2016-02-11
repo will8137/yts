@@ -9,11 +9,11 @@ var fs = require('fs-extra');
 
 mongoose.connect('mongodb://localhost/yts');
 
-var models_dir = __dirname + '/app/models';
-fs.readdirSync(models_dir).forEach(function (file) {
-    if(file[0] === '.') return; 
-    require(models_dir+'/'+ file);
-});
+// var models_dir = __dirname + '/app/models';
+// fs.readdirSync(models_dir).forEach(function (file) {
+//     if(file[0] === '.') return; 
+//     require(models_dir+'/'+ file);
+// });
 
 var app = express();
 var router = express.Router();
@@ -29,6 +29,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('./lib/routes/users')(app);
+require('./lib/routes/spotify')(app);
+require('./lib/routes/youtube')(app);
 
 app.get("/", function(req, res){ 
   res.render("index", {title: "Yts"});
@@ -66,7 +70,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(8137, function () {
-  console.log('Example app listening on port 8137!');
+  console.log('yts app listening on port 8137!');
 });
 
 
