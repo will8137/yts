@@ -12,7 +12,6 @@ $(function(){
 			var artistName = data.track.artists[0].name;
 			if(index === 0){
 				var userName = data.added_by.id;
-				console.log(userName)
 				$('.tracks').prepend('<h1>'+userName+'\'s playlist</h1><hr style="margin: 5px 0px">')
 			}
 			
